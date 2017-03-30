@@ -1,0 +1,10 @@
+plugins:
+  guest_locker_enabled:
+    default: false
+    client: true
+  guest_locker_topic_views_threshold:
+    default: 1
+    client: true
+  social_locker_enabled:
+    default: false
+    client: true

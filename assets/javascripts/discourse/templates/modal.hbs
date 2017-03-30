@@ -1,0 +1,28 @@
+{{#d-lockable-modal modalClass=modalClass title=title isLocked=isLocked}}
+  <div class="modal-outer-container">
+    <div class="modal-middle-container">
+      <div class="modal-inner-container">
+        <div class="modal-header">
+          {{#unless isLocked}}
+            <a class="close" {{action "closeModal"}}>{{fa-icon "times"}}</a>
+          {{/unless}}
+          <h3>{{title}}</h3>
+          <div class="clearfix"></div>
+        </div>
+        <div id='modal-alert'></div>
+        {{outlet "modalBody"}}
+        {{#each errors as |error|}}
+          <div class="alert alert-error">
+            <button class="close" data-dismiss="alert">×</button>
+            {{error}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+{{/d-lockable-modal}}
+{{#if isLocked}}
+  <style type="text/css">
+    html, body { overflow: hidden; }
+  </style>
+{{/if}}

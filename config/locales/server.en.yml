@@ -1,0 +1,4 @@
+en:
+  site_settings:
+    guest_locker_enabled: "Enable 'Guest Lock' pop-up"
+    social_locker_enabled: "Enable 'Social Lock' pop-up"
