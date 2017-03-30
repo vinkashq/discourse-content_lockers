@@ -3,9 +3,13 @@ import DiscourseModal from "discourse/components/d-modal";
 
 export default DiscourseModal.extend({
 
+  _isLocked() {
+    return this.get('isLocked') === true;
+  },
+
   @on("didInsertElement")
   setUp() {
-    if (this.get('isLocked') == false) {
+    if (this._isLocked() === false) {
       $('html').on('keydown.discourse-modal', e => {
         if (e.which === 27) {
           Em.run.next(() => $('.modal-header a.close').click());
@@ -26,7 +30,7 @@ export default DiscourseModal.extend({
     const $target = $(e.target);
     if (($target.hasClass("modal-middle-container") ||
         $target.hasClass("modal-outer-container")) &&
-        this.get('isLocked') == false) {
+        this._isLocked() == false) {
       // Delegate click to modal close if clicked outside.
       // We do this because some CSS of ours seems to cover
       // the backdrop and makes it unclickable.
