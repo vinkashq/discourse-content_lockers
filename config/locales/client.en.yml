@@ -7,3 +7,5 @@ en:
         sign_up: "Sign Up"
         log_in: "I already have an account"
         or: "or"
+      social_locker:
+        title: "Social profiles"

@@ -7,29 +7,49 @@ export default {
   name: "content_lockers",
 
   initialize(container) {
-    if(Discourse.SiteSettings.guest_locker_enabled) {
-      if (!Discourse.User.current()) {
-        var pageView = 0;
-        // Tell our AJAX system to track a page transition
-        const router = container.lookup('router:main');
-        router.on('willTransition', viewTrackingRequired);
-        router.on('didTransition', cleanDOM);
 
-        startPageTracking(router);
+    if(Discourse.SiteSettings.guest_locker_enabled || Discourse.SiteSettings.social_locker_enabled) {
+      var pageViews = 0;
+      var topicViews = 0;
+      // Tell our AJAX system to track a page transition
+      const router = container.lookup('router:main');
+      router.on('willTransition', viewTrackingRequired);
+      router.on('didTransition', cleanDOM);
 
-        onPageChange((url, title) => {
-          var urlPrefix = "/t/";
+      startPageTracking(router);
 
-          var pattern = new RegExp('^' + urlPrefix);
-          var hasPrefix = pattern.test(url);
-          if(hasPrefix) {
-            pageView++;
-            if (pageView >= Discourse.SiteSettings.guest_locker_topic_views_threshold) {
+      onPageChange((url, title) => {
+        var showing = false;
+
+        pageViews++;
+
+        if (Discourse.SiteSettings.guest_locker_enabled && !Discourse.User.current()) {
+          var topicPattern = new RegExp('^/t/');
+
+          if(topicPattern.test(url)) {
+            topicViews++;
+
+            if (topicViews >= Discourse.SiteSettings.guest_locker_topic_views_threshold) {
               showLockableModal('guest-locker');
+              showing = true;
             }
+
           }
-        });
-      }
+
+        }
+
+        if (Discourse.SiteSettings.social_locker_enabled && !showing) {
+          var pageViewsThreshold = Discourse.User.current() ? Discourse.SiteSettings.social_locker_guest_threshold : Discourse.SiteSettings.social_locker_user_threshold;
+
+          if (pageViews % pageViewsThreshold == 1) {
+            showLockableModal('social-locker');
+            showing = true;
+          }
+
+        }
+
+      });
     }
+
   }
 };
