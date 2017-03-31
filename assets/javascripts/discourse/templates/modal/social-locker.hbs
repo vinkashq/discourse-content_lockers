@@ -1,3 +1,38 @@
 {{#d-modal-body title="modal.social_locker.title" class="social-locker"}}
+  <div class="fb-like" data-href="{{siteSettings.facebook_page_url}}" data-layout="button_count" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
 
+  <a {{action "fbShare"}} class="fb-ui-share" data-layout="button_count" data-size="large" data-mobile-iframe="false"><img src="https://www.facebook.com/rsrc.php/v3/yq/r/5nnSiJQxbBq.png" /> Share</a>
+
+  <a class="twitter-follow-button" href="https://twitter.com/{{siteSettings.twitter_handle}}" data-size="large" data-show-count="false">Follow @{{siteSettings.twitter_handle}}</a>
+
+  <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="large">Tweet</a>
 {{/d-modal-body}}
+<style>
+.fb_iframe_widget iframe {
+  margin-top: 5px;
+}
+.fb-ui-share {
+    background: #4267b2;
+    border: 1px solid #4267b2;
+    color: #fff;
+    cursor: pointer;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+    white-space: nowrap;
+    display: inline-block;
+    zoom: 1;
+    vertical-align: middle;
+    border-radius: 4px;
+    font-size: 13px;
+    height: 22px;
+    line-height: 22px;
+    padding: 2px 6px;
+    font-weight: bold;
+}
+a.fb-ui-share:hover {
+  color: #fff;
+}
+.twitter-follow-button, .twitter-share-button {
+  vertical-align: middle;
+}
+</style>
