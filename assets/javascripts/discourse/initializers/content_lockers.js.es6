@@ -20,28 +20,30 @@ export default {
       onPageChange((url, title) => {
         var showing = false;
 
-        if (Discourse.SiteSettings.guest_locker_enabled && !Discourse.User.current()) {
-          var topicPattern = new RegExp('^/t/');
+        var topicPattern = new RegExp('^/t/');
 
-          if(topicPattern.test(url)) {
+        if(topicPattern.test(url)) {
+
+          if (Discourse.SiteSettings.guest_locker_enabled && !Discourse.User.current()) {
 
             if (topicsViewed >= Discourse.SiteSettings.guest_locker_topic_views_threshold) {
-              showLockableModal('guest-locker');
+              showLockableModal('guest-locker', {secondsToWait: Discourse.SiteSettings.guest_locker_waiting_seconds});
               showing = true;
             }
 
-            if (Discourse.SiteSettings.social_locker_enabled && !showing) {
-              var pageViewsThreshold = Discourse.User.current() ? Discourse.SiteSettings.social_locker_user_threshold : Discourse.SiteSettings.social_locker_guest_threshold;
+          }
 
-              if ((pageViewsThreshold > 0) && (topicsViewed % pageViewsThreshold == 0)) {
-                showLockableModal('social-locker');
-                showing = true;
-              }
+          if (Discourse.SiteSettings.social_locker_enabled && !showing) {
+            const pageViewsThreshold = Discourse.User.current() ? Discourse.SiteSettings.social_locker_user_threshold : Discourse.SiteSettings.social_locker_guest_threshold;
 
+            if ((pageViewsThreshold > 0) && (topicsViewed % pageViewsThreshold == 0)) {
+              showLockableModal('social-locker', {secondsToWait: Discourse.SiteSettings.social_locker_waiting_seconds});
+              showing = true;
             }
 
-            topicsViewed++;
           }
+
+          topicsViewed++;
 
         }
 

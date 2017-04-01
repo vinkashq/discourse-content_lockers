@@ -9,6 +9,7 @@ export default function(name, opts) {
 
   modalController.set('modalClass', 'modal-locked');
   modalController.set('isLocked', true);
+  modalController.set('secondsToWait', opts.secondsToWait);
 
   const controllerName = opts.admin ? `modals/${name}` : name;
 
@@ -35,6 +36,7 @@ export default function(name, opts) {
     const model = opts.model;
     if (model) { controller.set('model', model); }
     if (controller.onShow) { controller.onShow(); }
+    if (modalController.onShow) { modalController.onShow(); }
     controller.set('flashMessage', null);
   }
 

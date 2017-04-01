@@ -11,6 +11,11 @@
         </div>
         <div id='modal-alert'></div>
         {{outlet "modalBody"}}
+        {{#if isLocked}}
+          <div class="modal-footer">
+            <div class="please_wait">{{i18n "modal.please_wait" count=secondsRemaining}}</div>
+          </div>
+        {{/if}}
         {{#each errors as |error|}}
           <div class="alert alert-error">
             <button class="close" data-dismiss="alert">×</button>

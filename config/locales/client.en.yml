@@ -1,6 +1,7 @@
 en:
   js:
     modal:
+      please_wait: "Wait until {{count}} seconds"
       guest_locker:
         title: "Why do I need to sign in?"
         sign_up_email: "Sign Up with Email"
@@ -8,4 +9,4 @@ en:
         log_in: "I already have an account"
         or: "or"
       social_locker:
-        title: "Social profiles"
+        title: "Follow us on social networks"

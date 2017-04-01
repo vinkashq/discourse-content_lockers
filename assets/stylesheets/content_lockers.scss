@@ -1,0 +1,50 @@
+.modal-locked {
+
+  .please_wait {
+    font-style: italic;
+    text-align: right;
+    color: #888;
+  }
+
+  #login-buttons {
+    margin-bottom: 0;
+    text-align: center;
+  }
+  .modal-footer {
+    text-align: center;
+    color: #666666;
+  }
+  .modal-footer a {
+    font-weight: bold;
+    color: #666666;
+  }
+
+  .fb_iframe_widget iframe {
+    margin-top: 5px;
+  }
+  .fb-ui-share {
+      background: #4267b2;
+      border: 1px solid #4267b2;
+      color: #fff;
+      cursor: pointer;
+      font-family: Helvetica, Arial, sans-serif;
+      margin: 0;
+      white-space: nowrap;
+      display: inline-block;
+      zoom: 1;
+      vertical-align: middle;
+      border-radius: 4px;
+      font-size: 13px;
+      height: 22px;
+      line-height: 22px;
+      padding: 2px 6px;
+      font-weight: bold;
+  }
+  a.fb-ui-share:hover {
+    color: #fff;
+  }
+  .twitter-follow-button, .twitter-share-button {
+    vertical-align: middle;
+  }
+
+}

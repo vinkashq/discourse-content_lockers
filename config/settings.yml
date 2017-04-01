@@ -10,6 +10,9 @@ plugins:
   guest_locker_topic_views_threshold:
     default: 1
     client: true
+  guest_locker_waiting_seconds:
+    default: 10
+    client: true
   social_locker_enabled:
     default: false
     client: true
@@ -18,6 +21,9 @@ plugins:
     client: true
   social_locker_user_threshold:
     default: 0
+    client: true
+  social_locker_waiting_seconds:
+    default: 10
     client: true
   facebook_page_url:
     default: ''
