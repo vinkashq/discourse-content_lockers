@@ -9,10 +9,10 @@ export default Ember.Controller.extend(ModalFunctionality, {
     if (typeof FB === 'undefined' || FB === null) {
       window.fbAsyncInit = function() {
         FB.Event.subscribe('edge.create', function(href, widget) {
-          self.send('closeModal');
+          self.send('success');
         });
         FB.Event.subscribe('message.send', function(href, widget) {
-          self.send('closeModal');
+          self.send('success');
         });
       };
     }
@@ -26,10 +26,10 @@ export default Ember.Controller.extend(ModalFunctionality, {
       }, 1000);
     } else {
       twttr.events.bind('tweet', function (event) {
-        self.send('closeModal');
+        self.send('success');
       });
       twttr.events.bind('follow', function (event) {
-        self.send('closeModal');
+        self.send('success');
       });
     }
   },
@@ -55,9 +55,17 @@ export default Ember.Controller.extend(ModalFunctionality, {
         href: self.get('href'),
       }, function(response) {
         if (response && !response.error_message) {
-          self.send('closeModal');
+          self.send('success');
         }
       });
+    },
+
+    success() {
+      var date = new Date();
+      var hours = 24;
+      date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+      $.cookie("social_locker", 'success', { expires: date });
+      this.send('closeModal');
     }
   }
 

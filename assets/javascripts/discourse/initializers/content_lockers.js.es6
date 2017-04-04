@@ -34,13 +34,16 @@ export default {
           }
 
           if (Discourse.SiteSettings.social_locker_enabled && !showing) {
-            const pageViewsThreshold = Discourse.User.current() ? Discourse.SiteSettings.social_locker_user_threshold : Discourse.SiteSettings.social_locker_guest_threshold;
+            const status = $.cookie("social_locker");
 
-            if ((pageViewsThreshold > 0) && (topicsViewed % pageViewsThreshold == 0)) {
-              showLockableModal('social-locker', {secondsToWait: Discourse.SiteSettings.social_locker_waiting_seconds});
-              showing = true;
+            if (status == null || status != 'success') {
+              const pageViewsThreshold = Discourse.User.current() ? Discourse.SiteSettings.social_locker_user_threshold : Discourse.SiteSettings.social_locker_guest_threshold;
+
+              if ((pageViewsThreshold > 0) && (topicsViewed % pageViewsThreshold == 0)) {
+                showLockableModal('social-locker', {secondsToWait: Discourse.SiteSettings.social_locker_waiting_seconds});
+                showing = true;
+              }
             }
-
           }
 
           topicsViewed++;

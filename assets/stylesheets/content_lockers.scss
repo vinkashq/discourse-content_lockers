@@ -1,3 +1,9 @@
+body.modal-open {
+  overflow: hidden;
+  max-height: 100%;
+  max-width: 100%;
+}
+
 .modal-locked {
 
   .please_wait {
