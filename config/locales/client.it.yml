@@ -1,0 +1,12 @@
+it:
+  js:
+    modal:
+      please_wait: "Attendi {{count}} secondi"
+      guest_locker:
+        title: "Perché devo eseguire l'accesso?"
+        sign_up_email: "Accedi con l'Email"
+        sign_up: "Accedi"
+        log_in: "Ho già un account"
+        or: "o"
+      social_locker:
+        title: "Seguici sui social network"
