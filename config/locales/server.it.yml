@@ -1,0 +1,11 @@
+it:
+  site_settings:
+    guest_locker_enabled: "Abilita il pop-up 'Blocco Ospite' "
+    guest_locker_topic_views_threshold: "Numero massimo di argomenti che un ospite può vedere prima di mostrare il blocco"
+    guest_locker_waiting_seconds: "Il blocco verrà automaticamente chiuso dopo (n) secondi"
+    social_locker_enabled: "Enable 'Blocco Social' pop-up"
+    social_locker_guest_threshold: "Numero massimo di argomenti che un ospite può vedere prima di mostrare il blocco. '0' per disabilitarlo."
+    social_locker_user_threshold: "Numero massimo di argomenti che un utente può vedere prima di mostrare il blocco. '0' per disabilitarlo."
+    social_locker_waiting_seconds: "Il blocco verrà automaticamente chiuso dopo (n) secondi"
+    facebook_page_url: "URL della pagina Facebook per il pulsante like sul Blocco Social"
+    twitter_handle: "L'username di Twitter per il pulsante segui sul Blocco Social"
