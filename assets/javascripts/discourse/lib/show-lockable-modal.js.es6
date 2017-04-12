@@ -6,9 +6,11 @@ export default function(name, opts) {
   // in Discourse. Only one can be shown with a particular state.
   const route = container.lookup('route:application');
   const modalController = route.controllerFor('modal');
+  const isCloseable = (typeof opts.isCloseable == "undefined") ? true : opts.isCloseable;
 
   modalController.set('modalClass', 'modal-locked');
   modalController.set('isLocked', true);
+  modalController.set('isCloseable', isCloseable);
   modalController.set('secondsToWait', opts.secondsToWait);
 
   const controllerName = opts.admin ? `modals/${name}` : name;

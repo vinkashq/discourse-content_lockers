@@ -5,11 +5,11 @@
         <div class="modal-header">
           <h3>{{title}}</h3>
 
-          {{#unless isLocked}}
+          {{#if isCloseable}}
             <div class='modal-close'>
               <a class="close" {{action "closeModal"}}>{{fa-icon "times"}}</a>
             </div>
-          {{/unless}}
+          {{/if}}
         </div>
 
         <div id='modal-alert'></div>

@@ -1,5 +1,6 @@
 en:
   site_settings:
+    display_close_button_on_lockers: "Show the close (x) button on top-right corner of the modal pop-up."
     guest_locker_enabled: "Enable 'Guest Locker' pop-up"
     guest_locker_topic_views_threshold: "Max topics guest can view before displaying locker"
     guest_locker_waiting_seconds: "Locker will be closed automatically after (n) seconds"

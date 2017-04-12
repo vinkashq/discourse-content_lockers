@@ -4,6 +4,9 @@ login:
     regex: "^\\d+$"
     client: true
 plugins:
+  display_close_button_on_lockers:
+    default: false
+    client: true
   guest_locker_enabled:
     default: false
     client: true
