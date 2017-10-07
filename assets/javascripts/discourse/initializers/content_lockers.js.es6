@@ -1,10 +1,11 @@
 import { cleanDOM } from 'discourse/lib/clean-dom';
-import { startPageTracking, onPageChange } from 'discourse/lib/page-tracker';
+import { startPageTracking } from 'discourse/lib/page-tracker';
 import { viewTrackingRequired } from 'discourse/lib/ajax';
 import showLockableModal from 'discourse/plugins/content_lockers/discourse/lib/show-lockable-modal';
 
 export default {
   name: "content_lockers",
+  after: 'inject-objects',
 
   initialize(container) {
     const siteSettings = container.lookup('site-settings:main');
@@ -16,14 +17,15 @@ export default {
       router.on('willTransition', viewTrackingRequired);
       router.on('didTransition', cleanDOM);
 
-      startPageTracking(router);
+      let appEvents = container.lookup('app-events:main');
+      startPageTracking(router, appEvents);
 
-      onPageChange((url, title) => {
+      appEvents.on('page:changed', data => {
         var showing = false;
 
         var topicPattern = new RegExp('^/t/');
 
-        if (topicPattern.test(url)) {
+        if (topicPattern.test(data.url)) {
 
           if (siteSettings.guest_locker_enabled && !Discourse.User.current()) {
 
